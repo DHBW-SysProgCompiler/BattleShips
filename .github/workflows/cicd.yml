@@ -20,9 +20,14 @@ jobs:
         echo -e "\n\n\n"
         echo -e "Submodule files"
         ls -la ./modules
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.apt-cache
+        key: ${{ runner.os }}-apt-${{ hashFiles('**/cicd.yml') }}
     - name: install dependencies
       run: |
-        sudo apt-get update
+        sudo apt-get update --download-only -o dir::cache::archives="${{ steps.cache-deps.outputs.cache-hit != 'true' && '~/.apt-cache' || '' }}"
         sudo apt-get install -y gcc-arm-none-eabi cmake gdb-multiarch qemu-system-arm
     - name: configure
       run: cmake --preset arm-cortex-m0-unix
