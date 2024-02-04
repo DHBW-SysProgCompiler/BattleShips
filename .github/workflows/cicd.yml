@@ -1,8 +1,8 @@
 name: C/C++ CI
 
-on:  [push]
-  #pull_request:
-  #  branches: [ dev, master ]
+on:  #[push]
+  pull_request:
+    branches: [ dev, master ]
 
 jobs:
   build:
@@ -33,23 +33,3 @@ jobs:
       run: cmake --preset arm-cortex-m0-unix
     - name: build
       run: cmake --build --preset arm-cortex-m0-unix
-    - name: Create Check Status Run
-      uses: actions/github-script@v5
-      with:
-        github-token: ${{ secrets.PAT }}
-        script: |
-          const { owner, repo } = context.repo
-          const conclusion = context.job.status === 'success' ? 'success' : 'failure'
-          await github.rest.checks.create({
-            owner,
-            repo,
-            name: 'C/C++ CI',
-            head_sha: context.sha,
-            status: 'completed',
-            conclusion: conclusion,
-            output: {
-              title: 'C/C++ CI',
-              summary: 'The result of the CI build',
-              text: `The build ${conclusion === 'success' ? 'succeeded' : 'failed'}.`
-            }
-          })
