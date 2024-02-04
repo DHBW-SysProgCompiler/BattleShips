@@ -16,7 +16,7 @@ jobs:
         submodules: true
     - name: List submodule files
       run: |
-        ls -R path/to/your/submodule
+        ls -la
     - name: Cache dependencies
       uses: actions/cache@v2
       with:
