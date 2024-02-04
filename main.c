@@ -13,13 +13,12 @@
 
 #include "modules/register_access.h"
 
-int main( void )
-{
-  uint32_t value = register_read( 0x20000000 );
+int main(void) {
+  uint32_t value = register_read(0x20000000);
 
   value = ~value;
 
-  register_write( 0x20000000, value );
+  register_write(0x20000000, value);
 
   return 0;
 }
