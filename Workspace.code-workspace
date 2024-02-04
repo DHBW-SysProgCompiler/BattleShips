@@ -30,6 +30,18 @@
 			"launch": {"visibility": "hidden"},
 			"launchTarget": {"visibility": "hidden"},
 			"buildTarget": {"visibility": "hidden"}
+		},
+		"files.associations": {
+			"nvic.h": "c",
+			"uart.h": "c",
+			"*.tcc": "c",
+			"deque": "c",
+			"list": "c",
+			"string": "c",
+			"unordered_map": "c",
+			"vector": "c",
+			"any": "c",
+			"system_error": "c"
 		}
 
 	},
