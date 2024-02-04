@@ -36,6 +36,7 @@ jobs:
     - name: Create Check Status Run
       uses: actions/github-script@v5
       with:
+        github-token: ${{ secrets.PAT }}
         script: |
           const { owner, repo } = context.repo
           const conclusion = context.job.status === 'success' ? 'success' : 'failure'
