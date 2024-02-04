@@ -17,6 +17,9 @@ jobs:
     - name: List submodule files
       run: |
         ls -la
+        echo -e "\n\n\n"
+        echo -e "Submodule files"
+        ls -la ./modules
     - name: Cache dependencies
       uses: actions/cache@v2
       with:
