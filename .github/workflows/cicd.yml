@@ -38,10 +38,8 @@ jobs:
       with:
         script: |
           const { owner, repo } = context.repo
-          const { number } = context.issue
-          const { id } = context.runId
           const conclusion = context.job.status === 'success' ? 'success' : 'failure'
-          await github.checks.create({
+          await github.rest.checks.create({
             owner,
             repo,
             name: 'C/C++ CI',
