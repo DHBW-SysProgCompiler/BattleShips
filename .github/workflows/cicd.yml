@@ -43,7 +43,7 @@ jobs:
             owner,
             repo,
             name: 'C/C++ CI',
-            head_sha: github.context.sha,
+            head_sha: context.sha,
             status: 'completed',
             conclusion: conclusion,
             output: {
