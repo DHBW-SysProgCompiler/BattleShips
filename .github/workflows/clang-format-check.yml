@@ -1,6 +1,9 @@
 name: Clang Format Check
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    branches: [ DEV, main ]
 
 jobs:
   build:
