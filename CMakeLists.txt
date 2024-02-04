@@ -37,6 +37,9 @@ target_sources(
     modules/uart.h
     modules/uart.c
 
+    # Heap-Allocations
+    modules/heap_allocations.h
+
     # Sreen-Print
     modules/screen_control.h
     modules/screen_control.c
