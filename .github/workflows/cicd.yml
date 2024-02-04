@@ -13,11 +13,23 @@ jobs:
     - uses: actions/checkout@v2
       with:
         token: ${{ secrets.PAT }}
+        submodules: true
+    - name: List submodule files
+      run: |
+        ls -R path/to/your/submodule
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.apt-cache
+        key: ${{ runner.os }}-apt-${{ hashFiles('**/apt-dependencies.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-apt-
     - name: install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y gcc-arm-none-eabi cmake gdb-multiarch qemu-system-arm
+        sudo apt-get install -y --download-only -o dir::cache=~/.apt-cache gcc-arm-none-eabi cmake gdb-multiarch qemu-system-arm
+        sudo dpkg -i ~/.apt-cache/*.deb
     - name: configure
       run: cmake --preset arm-cortex-m0-unix
     - name: build
-      run: cmake --build --preset arm-cortex-m0-unixcmake --build --preset arm-cortex-m0-unix
+      run: cmake --build --preset arm-cortex-m0-unix
