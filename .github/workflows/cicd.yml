@@ -11,6 +11,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.PAT }}
     - name: install dependencies
       run: |
         sudo apt-get update
