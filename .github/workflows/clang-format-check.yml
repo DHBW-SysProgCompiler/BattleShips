@@ -16,5 +16,5 @@ jobs:
         sudo apt-get install -y clang-format
     - name: Run clang-format
       run: |
-        find . -name '*.c' -or -name '*.h' | xargs clang-format -i -style=Google
+        find . -name '*.c' -or -name '*.h' | xargs clang-format -i -style=LLVM
         git diff --exit-code
