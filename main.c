@@ -10,5 +10,22 @@
  *
  * @brief *Main* Entry
  **/
+#include "modules/print_boards.h"
+#include "modules/term_control.h"
 
-int main(void) { return 0; }
+void empty_board(char board[]) {
+  for (int i = 0; i < 100; i++) {
+    board[i] = ' ';
+  }
+}
+
+int main(void) {
+  char player[100];
+  char bot[100];
+  empty_board(player);
+  empty_board(bot);
+  term_init(0, 0);
+  term_clear_screen();
+  print_boards(player, bot, 5, 6);
+  return 0;
+}
