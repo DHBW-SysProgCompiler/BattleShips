@@ -43,6 +43,8 @@ target_sources(
     # Term-Control
     modules/term_control.h
     modules/term_control.c
+    modules/print_boards.c
+    modules/print_boards.h
 
     # Math
     modules/math.h
