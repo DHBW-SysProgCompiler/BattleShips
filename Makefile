@@ -4,8 +4,8 @@ format:
 init_mod:
 	git submodule update --init --recursive;
 
-doc:
+doxy:
 	cd doc; doxygen Doxyfile; 
 
-open_doc:
+open_doxy:
 	./doc/doc_website/html/index.html
