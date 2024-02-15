@@ -41,7 +41,8 @@
 			"unordered_map": "c",
 			"vector": "c",
 			"any": "c",
-			"system_error": "c"
+			"system_error": "c",
+			"register_access.h": "c"
 		}
 
 	},
