@@ -69,8 +69,7 @@ static void copyData(void) {
   uint32_t const *dataCopyPos = &__data_start_rom__;
 
   /* loop over Data Section and copy data from flash */
-  for (uint32_t *dataPos = &__data_start__; dataPos < &__data_end__;
-       ++dataPos) {
+  for (uint32_t *dataPos = &__data_start__; dataPos < &__data_end__; ++dataPos) {
     *dataPos = *dataCopyPos;
     ++dataCopyPos;
   }

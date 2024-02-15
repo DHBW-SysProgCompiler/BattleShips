@@ -37,9 +37,18 @@ target_sources(
     modules/uart.h
     modules/uart.c
 
-    # Sreen-Print
-    modules/screen_control.h
-    modules/screen_control.c
+    # Heap-Allocations
+    modules/heap_allocations.h
+
+    # Term-Control
+    modules/term_control.h
+    modules/term_control.c
+    modules/print_boards.c
+    modules/print_boards.h
+
+    # Math
+    modules/math.h
+    modules/math.c
   )
 
 target_link_options(

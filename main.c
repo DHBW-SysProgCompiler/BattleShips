@@ -10,15 +10,22 @@
  *
  * @brief *Main* Entry
  **/
+#include "modules/print_boards.h"
+#include "modules/term_control.h"
 
-#include "modules/register_access.h"
+void empty_board(char board[]) {
+  for (int i = 0; i < 100; i++) {
+    board[i] = ' ';
+  }
+}
 
 int main(void) {
-  uint32_t value = register_read(0x20000000);
-
-  value = ~value;
-
-  register_write(0x20000000, value);
-
+  char player[100];
+  char bot[100];
+  empty_board(player);
+  empty_board(bot);
+  term_init(0, 0);
+  term_clear_screen();
+  print_boards(player, bot, 5, 6);
   return 0;
 }

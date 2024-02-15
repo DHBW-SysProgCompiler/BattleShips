@@ -1,6 +1,6 @@
 name: C/C++ CI
 
-on:  #[push]
+on: # [push]
   pull_request:
     branches: [ DEV, main ]
 
@@ -22,6 +22,7 @@ jobs:
         ls -la ./modules
     - name: Cache dependencies
       uses: actions/cache@v2
+      id: cache-deps
       with:
         path: ~/.apt-cache
         key: ${{ runner.os }}-apt-${{ hashFiles('**/cicd.yml') }}
