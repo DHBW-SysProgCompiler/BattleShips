@@ -37,9 +37,6 @@ target_sources(
     modules/uart.h
     modules/uart.c
 
-    # Heap-Allocations
-    modules/heap_allocations.h
-
     # Term-Control
     modules/term_control.h
     modules/term_control.c
@@ -49,6 +46,10 @@ target_sources(
     # Math
     modules/math.h
     modules/math.c
+
+    # board-structs
+    modules/board.h
+    modules/board.c
   )
 
 target_link_options(

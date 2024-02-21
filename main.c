@@ -10,22 +10,33 @@
  *
  * @brief *Main* Entry
  **/
+
+#include "modules/board.h"
 #include "modules/print_boards.h"
 #include "modules/term_control.h"
 
-void empty_board(char board[]) {
-  for (int i = 0; i < 100; i++) {
-    board[i] = ' ';
-  }
-}
-
 int main(void) {
-  char player[100];
-  char bot[100];
-  empty_board(player);
-  empty_board(bot);
   term_init(0, 0);
+
+  struct board b;
+  struct cursor_position c;
+
+  board_init(&b);
+
   term_clear_screen();
-  print_boards(player, bot, 5, 6);
+  print_boards(&b, &b, &c);
+
+  while (1) {
+
+    char inp = term_stdin_read();
+    if (inp) {
+
+      if (cursor_parse_wasd(&c, inp)) {
+        print_boards(&b, &b, &c);
+      }
+      term_stdin_clear();
+    }
+  }
+
   return 0;
 }
