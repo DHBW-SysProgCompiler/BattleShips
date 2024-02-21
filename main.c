@@ -13,15 +13,17 @@
 
 #include "modules/board.h"
 #include "modules/print_boards.h"
+#include "modules/random.h"
 #include "modules/term_control.h"
 
 int main(void) {
   term_init(0, 0);
+  rng_init();
 
   struct board b;
   struct cursor_position c;
 
-  board_init(&b);
+  board_place_ships(&b);
 
   term_clear_screen();
   print_boards(&b, &b, &c);
