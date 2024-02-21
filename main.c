@@ -25,13 +25,10 @@ int main(void) {
 
   term_clear_screen();
   print_boards(&b, &b, &c);
-
   while (1) {
-
     char inp = term_stdin_read();
     if (inp) {
-
-      if (cursor_parse_wasd(&c, inp)) {
+      if (cursor_parse_input(&b, &c, inp)) {
         print_boards(&b, &b, &c);
       }
       term_stdin_clear();
