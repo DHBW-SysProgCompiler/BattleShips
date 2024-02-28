@@ -5,9 +5,7 @@
 			"path": "."
 		}
 	],
-
 	"settings": {
-
 		/* Add the Start Command for Qemu to a orange button in statusbar */
 		"actionButtons": {
 			"reloadButton": null,
@@ -16,30 +14,44 @@
 				{
 					"name": "Start Qemu",
 					"color": "#dd8800",
-					"command": "qemu-system-arm -M microbit -device loader,file=build-cortex-m0/testApp.elf -nographic -S -s -serial mon:stdio",
+					"command": "clear && qemu-system-arm -M microbit -device loader,file=build-cortex-m0/testApp.elf -nographic -S -s -serial mon:stdio",
 					"singleInstance": true
-				},{
+				},
+				{
 					"name": "Run Qemu",
 					"color": "#33dd33",
-					"command": "qemu-system-arm -M microbit -device loader,file=build-cortex-m0/testApp.elf -nographic -s -serial mon:stdio",
+					"command": "clear && qemu-system-arm -M microbit -device loader,file=build-cortex-m0/testApp.elf -nographic -s -serial mon:stdio",
 					"singleInstance": true
-				},{
+				},
+				{
 					"name": "Kill Qemu",
 					"color": "#ff0033",
-					"command": "pkill qemu-system-arm",
+					"command": "pkill qemu-system-arm && clear",
 					"singleInstance": true
 				}
 			]
 		},
-
 		/* Clean up the CMake interface, by removing unnecessary icons */
-		"cmake.touchbar.advanced": {"launch": "hidden", "debug": "hidden"},
+		"cmake.touchbar.advanced": {
+			"launch": "hidden",
+			"debug": "hidden"
+		},
 		"cmake.statusbar.advanced": {
-			"debug": {"visibility": "hidden"},
-			"ctest": {"visibility": "hidden"},
-			"launch": {"visibility": "hidden"},
-			"launchTarget": {"visibility": "hidden"},
-			"buildTarget": {"visibility": "hidden"}
+			"debug": {
+				"visibility": "hidden"
+			},
+			"ctest": {
+				"visibility": "hidden"
+			},
+			"launch": {
+				"visibility": "hidden"
+			},
+			"launchTarget": {
+				"visibility": "hidden"
+			},
+			"buildTarget": {
+				"visibility": "hidden"
+			}
 		},
 		"files.associations": {
 			"nvic.h": "c",
@@ -54,9 +66,7 @@
 			"system_error": "c",
 			"register_access.h": "c"
 		}
-
 	},
-
 	/* Launch Config for "Native Debug" Extension */
 	"launch": {
 		"version": "0.2.0",
@@ -75,7 +85,6 @@
 			}
 		]
 	},
-
 	/* Used Extensions */
 	"extensions": {
 		"recommendations": [
@@ -89,5 +98,4 @@
 			"ms-vscode.cmake-tools",
 		]
 	}
-
 }

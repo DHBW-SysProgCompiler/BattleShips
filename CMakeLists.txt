@@ -37,18 +37,21 @@ target_sources(
     modules/uart.h
     modules/uart.c
 
-    # Heap-Allocations
-    modules/heap_allocations.h
-
     # Term-Control
     modules/term_control.h
     modules/term_control.c
-    modules/print_boards.c
     modules/print_boards.h
+    modules/print_boards.c
+    modules/asciiart.h
+    modules/asciiart.c
 
     # Math
     modules/math.h
     modules/math.c
+
+    # board-structs
+    modules/board.h
+    modules/board.c
   )
 
 target_link_options(
