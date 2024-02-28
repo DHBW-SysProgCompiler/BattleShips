@@ -20,7 +20,7 @@
 				{
 					"name": "Run Qemu",
 					"color": "#33dd33",
-					"command": "clear && qemu-system-arm -M microbit -device loader,file=build-cortex-m0/testApp.elf -nographic -s -serial mon:stdio",
+					"command": "clear && make run",
 					"singleInstance": true
 				},
 				{

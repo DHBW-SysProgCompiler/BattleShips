@@ -72,7 +72,7 @@ void main_init() {
 
 // interupt execution until dificulty is selected
 void select_dificulty() {
-  term_print("\n\nselect dificulty;\n[1] = hard\n[2] = medim (default)\n[3] = easy");
+  term_print("\n\nselect difficulty;\n[1] = hard\n[2] = medim (default)\n[3] = easy");
   while (1) {
     char c = term_stdin_read();
     if (c >= '1' && c <= '3') {
