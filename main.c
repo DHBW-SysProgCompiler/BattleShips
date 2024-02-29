@@ -92,18 +92,20 @@ void main_game_loop() {
   timer_start(TIMER0);
 
   while (1) {
-    // read user-input
-    char inp = term_stdin_read();
-    if (inp) {
-      int state = cursor_parse_input(&bot, &cursor, inp);
-      print_pls = state;
-      check_game_over = (state == 4);
-      term_stdin_clear();
+    // read user-input until something else has to be done
+    while (!print_pls && !check_game_over) {
+      char inp = term_stdin_read();
+      if (inp) {
+        int state = cursor_parse_input(&bot, &cursor, inp);
+        print_pls = state;
+        check_game_over = (state == 4);
+      }
     }
+    term_stdin_clear();
 
     // print board if needed
     if (print_pls) {
-      print_boards(&player, &bot, &cursor);
+      update_boards(&player, &bot, &cursor);
       print_pls = 0;
     }
 
