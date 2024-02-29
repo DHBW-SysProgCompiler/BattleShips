@@ -174,7 +174,7 @@ void print_stats() {
   term_println("\n");
   art_print_bargraph(hits, misses);
 
-  term_print("\n\n [press 'Ctrl+A, X' to terminate QEMU]");
+  term_print("\n\n[press 'Ctrl+A, X' to terminate QEMU]");
 }
 
 #pragma endregion
