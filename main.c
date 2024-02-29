@@ -48,8 +48,8 @@ void bot_scedule_next_shot() {
 // methot to be called by the timer-interrupt
 void bot_action() {
   uint8_t temp = board_bot_shoot(&player);
-  print_pls = temp;
-  check_game_over = (temp == 4);
+  print_pls |= temp;
+  check_game_over |= (temp == 4);
   bot_scedule_next_shot();
 }
 
@@ -97,8 +97,8 @@ void main_game_loop() {
       char inp = term_stdin_read();
       if (inp) {
         int state = cursor_parse_input(&bot, &cursor, inp);
-        print_pls = state;
-        check_game_over = (state == 4);
+        print_pls |= state;
+        check_game_over |= (state == 4);
       }
     }
     term_stdin_clear();
