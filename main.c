@@ -72,7 +72,7 @@ void main_init() {
 
 // interupt execution until dificulty is selected
 void select_dificulty() {
-  term_print("\n\nselect dificulty;\n[1] = hard\n[2] = medim (default)\n[3] = easy");
+  term_print("\n\nselect difficulty;\n[1] = hard\n[2] = medim (default)\n[3] = easy");
   while (1) {
     char c = term_stdin_read();
     if (c >= '1' && c <= '3') {
@@ -92,18 +92,20 @@ void main_game_loop() {
   timer_start(TIMER0);
 
   while (1) {
-    // read user-input
-    char inp = term_stdin_read();
-    if (inp) {
-      int state = cursor_parse_input(&bot, &cursor, inp);
-      print_pls = state;
-      check_game_over = (state == 4);
-      term_stdin_clear();
+    // read user-input until something else has to be done
+    while (!print_pls && !check_game_over) {
+      char inp = term_stdin_read();
+      if (inp) {
+        int state = cursor_parse_input(&bot, &cursor, inp);
+        print_pls = state;
+        check_game_over = (state == 4);
+      }
     }
+    term_stdin_clear();
 
     // print board if needed
     if (print_pls) {
-      print_boards(&player, &bot, &cursor);
+      update_boards(&player, &bot, &cursor);
       print_pls = 0;
     }
 
@@ -171,6 +173,8 @@ void print_stats() {
   term_printnr(misses + hits);
   term_println("\n");
   art_print_bargraph(hits, misses);
+
+  term_print("\n\n[press 'Ctrl+A, X' to terminate QEMU]");
 }
 
 #pragma endregion
