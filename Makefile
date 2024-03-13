@@ -1,14 +1,17 @@
+default_target: init run
+
 format:
 	find . -name '*.[ch]' -exec clang-format --style=file -i {} +;
 
 compile:
-	cd build-cortex-m0; make;
+	make -C build-cortex-m0;
 
-run:
-	make compile; qemu-system-arm -M microbit -device loader,file=build-cortex-m0/testApp.elf -nographic -s -serial mon:stdio;
+run: compile
+	qemu-system-arm -M microbit -device loader,file=build-cortex-m0/testApp.elf -nographic -s -serial mon:stdio;
 
-init_mod:
+init:
 	git submodule update --init --recursive;
+	cmake --preset arm-cortex-m0-unix;
 
 doxy:
 	cd doc; doxygen Doxyfile; 
